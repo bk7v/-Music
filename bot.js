@@ -351,7 +351,7 @@ client.on('message', message => {
   if(message.content.startsWith(`${prefix}invite`)){
     var embed = new Discord.RichEmbed()
     .setTitle(">> ClickHere To Add" + `${client.user.username}` + " <<")
-    .setURL("https://discordapp.com/oauth2/authorize?client_id=" + `${client.user.id}` + "&scope=bot&permissions=2080374975")
+    .setURL("https://discordapp.com/api/oauth2/authorize?client_id=538000673174978570&permissions=0&scope=bot" + `${client.user.id}` + "&scope=bot&permissions=2080374975")
     .setTimestamp()
     .setFooter(`Requested By | ${message.author.username}`)
     .setColor("RANDOM")
@@ -366,15 +366,15 @@ client.on('message', message => {
     let role = new Discord.RichEmbed()
   .setDescription(`
   امثله على اعطاء رتبه : 
-  #role @mention rolename : لأعطاء رتبة لعضو معين
-  #role all rolename : لأعطاء رتبة للجميع 
-  #role humans rolename : لأعطاء رتبة للاشخاص فقط
-  #role bots rolename : لأعطاء رتبة لجميع البوتات
+  $role @mention rolename : لأعطاء رتبة لعضو معين
+  $role all rolename : لأعطاء رتبة للجميع 
+  $role humans rolename : لأعطاء رتبة للاشخاص فقط
+  $role bots rolename : لأعطاء رتبة لجميع البوتات
   امثله على سحب رتبه
-  #-role @mention rolename : لسحب رتبة لعضو معين
-  #-role all rolename : لسحب رتبة للجميع 
-  #-role humans rolename : لسحب رتبة للاشخاص فقط
-  #-role bots rolename : لسحب رتبة لجميع البوتات`)
+  $-role @mention rolename : لسحب رتبة لعضو معين
+  $-role all rolename : لسحب رتبة للجميع 
+  $-role humans rolename : لسحب رتبة للاشخاص فقط
+  $-role bots rolename : لسحب رتبة لجميع البوتات`)
   .setFooter('Requested by '+message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(role)
   }})
@@ -1088,7 +1088,7 @@ client.on("message", message => {
 var AsciiTable = require('ascii-data-table').default
 client.on('message', message =>{
 
-    if(message.content == "#roles"){
+    if(message.content == "$roles"){
         if(message.guild.member(message.author).hasPermission("ADMINISTRATOR"))
         var 
         ros=message.guild.roles.size,
@@ -1147,7 +1147,7 @@ client.on('message', async message =>{
   var args = message.content.split(" ").slice(1);
     if(command == "mute") {
       let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      if(!tomute) return message.reply(":information_source: `#mute @OrochiX` يجب تحديد شخص ") .then(m => m.delete(5000));
+      if(!tomute) return message.reply(":information_source: " #mute @OrochiX` يجب تحديد شخص ") .then(m => m.delete(5000));
       if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**I Dont Have Permission** `MANAGE_MASSAGEES`');
       let muterole = message.guild.roles.find(`name`, "Muted");
   
@@ -1213,7 +1213,7 @@ client.on('message',message =>{
     if(command == prefix + 'unban') {
         if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(':no_entry: | You dont have **BAN_MEMBERS** Permission!');
         if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send(':no_entry: | I dont have **BAN_MEMBERS** Permission!');
-        if(!args[1]) return  message.channel.send(':information_source:  `#kick <@id>` يجب تحديد شخص');
+        if(!args[1]) return  message.channel.send(':information_source:  `$kick <@id>` يجب تحديد شخص');
         if(args[1].length < 16) return message.reply(':no_entry: | This ID is not id user!');
         message.guild.fetchBans().then(bans => {
             var Found = bans.find(m => m.id === args[1]);
@@ -1262,7 +1262,7 @@ client.on('message',message =>{
       if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
       
         let kinggamer = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-           if(!kinggamer) return message.channel.send(':information_source:  `#kick @OrochiX` يجب تحديد شخص ').then(msg => {
+           if(!kinggamer) return message.channel.send(':information_source:  `$kick @OrochiX` يجب تحديد شخص ').then(msg => {
             msg.delete(3500);
             message.delete(3500); 
           });
@@ -1298,7 +1298,7 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-  var prefix = "#";
+  var prefix = "$";
     if (message.author.kick) return;
     if (!message.content.startsWith(prefix)) return;
   
@@ -1439,91 +1439,91 @@ message.author.sendMessage(`
 
 الاوامر العامة
 
-#id معلومات عن حسابك الشخصي
+$id معلومات عن حسابك الشخصي
 
-#server معلومات حول السيرفر
+$server معلومات حول السيرفر
 
-#move سحب عضو الى رومك الصوتي
+$move سحب عضو الى رومك الصوتي
 
-#clear مسح الرسائل الموجوده في الروم بعدد
+$clear مسح الرسائل الموجوده في الروم بعدد
 
-#avatar يعرض اك صورتك الشخصية
+$avatar يعرض اك صورتك الشخصية
 
-#image يعرض لك صورة السيرفر
+$image يعرض لك صورة السيرفر
 
-#credit يوريك كم الكريديت حقتك
+$credit يوريك كم الكريديت حقتك
 
-#daily يسوي لك سحب فلوس
+$daily يسوي لك سحب فلوس
 
-#rep يعطي ريب
+$rep يعطي ريب
 
-#rank يطلع لك نقاطك
+$rank يطلع لك نقاطك
 
-#profile معلومات عامة مع الصورة
+$profile معلومات عامة مع الصورة
 
 أوامر ادارة السيرفرات 
 
-#ban حضر عضو من السيرفر
+$ban حضر عضو من السيرفر
 
-#setwelcomer لتحديد روم الويلكم
+$setwelcomer لتحديد روم الويلكم
 
-#autorole لتشغيل الاوتو رول وتحديد الرتبه
+$autorole لتشغيل الاوتو رول وتحديد الرتبه
 
-#kick طرد عضو من السيرفر
+$kick طرد عضو من السيرفر
 
-#mute اعضاء ميوت كتابي لعضو في السيرفر
+$mute اعضاء ميوت كتابي لعضو في السيرفر
 
-#unmute فك الميوت عن عضو في السيرفر
+$unmute فك الميوت عن عضو في السيرفر
 
-#warn لتحذير شخص
+$warn لتحذير شخص
 
-#dac حذف جميع رومات السيرفر
+$dac حذف جميع رومات السيرفر
 
-#dar حذف جميع رتب السيرفر
+$dar حذف جميع رتب السيرفر
 
-#openroom فتح المحادثة في الروم
+$openroom فتح المحادثة في الروم
 
-#closeroom قفل المحادثة في الروم
+$closeroom قفل المحادثة في الروم
 
-#role اعطاء رتبه لشخض معين
+$role اعطاء رتبه لشخض معين
 
-#role humans اعطاء رتب للبشريين
+$role humans اعطاء رتب للبشريين
 
-#role bots اعطاء رتبه للبوتات
+$role bots اعطاء رتبه للبوتات
 
-#role all اعطاء رتبه للجميع سواء بشر او بوتات
+$role all اعطاء رتبه للجميع سواء بشر او بوتات
 
-#-role سحب الرتبه من شخص معين
+$-role سحب الرتبه من شخص معين
 
-#-role humans سحب رتبه من الميمبرز
+$-role humans سحب رتبه من الميمبرز
 
-#-role bots سحب رتبه للبوتات
+$-role bots سحب رتبه للبوتات
 
-#-role all سحب رتبه معينه من جميع الاعضاء سواء يوزرات او بوتات
+$-role all سحب رتبه معينه من جميع الاعضاء سواء يوزرات او بوتات
 
-#temp on تشغيل الرومات المؤقته
+$temp on تشغيل الرومات المؤقته
 
-#temp off اطفاء الرومات المؤقته
+$temp off اطفاء الرومات المؤقته
 
 اوامر الميوزك
 
-#play لتشغيل ميوزك
+$play لتشغيل ميوزك
 
-#stop لايقاف الميوزك
+$stop لايقاف الميوزك
 
-#skip لتخطي الميوزك
+$skip لتخطي الميوزك
 
-#queue لعرض قائمه الانتظار
+$queue لعرض قائمه الانتظار
 
-#vol لرفع صوت
+$vol لرفع صوت
 
 اخرى 
 
-#support رابط سيرفر الدعم الفني
+$support رابط سيرفر الدعم الفني
 
-#invite رابط اضافة البوت
+$invite رابط اضافة البوت
 
-#ping لمعرفه سرعه اتصال البوت
+$ping لمعرفه سرعه اتصال البوت
 
 **`);
 
@@ -4693,7 +4693,7 @@ if (err) console.error(err)
 const sWlc = {}
 const premium = ['489342754887827487', '', '', '']
 client.on('message', message => {
-var prefix = "#";
+var prefix = "$";
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
   if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
